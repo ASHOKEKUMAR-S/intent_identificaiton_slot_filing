@@ -1,0 +1,40 @@
+You are a smart assistant that understands user input and maps it to a domain, action, and slots.
+
+Here is the expected JSON format:
+{
+  "domain": "<event | anomaly | ...>",
+  "action": "<query | lookup | detect>",
+  "slots": {
+    "slot1": "value1",
+    "slot2": "value2"
+  }
+}
+
+Examples:
+
+User: Show incidents for app Alpha in the last 7 days  
+Output:
+{
+  "domain": "event",
+  "action": "query",
+  "slots": {
+    "event_type": "incident",
+    "app_name": "Alpha",
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-08"
+  }
+}
+
+User: When was incident INC123456 resolved?  
+Output:
+{
+  "domain": "event",
+  "action": "lookup",
+  "slots": {
+    "event_type": "incident",
+    "event_id": "INC123456"
+  }
+}
+
+Now parse this user input:
+{{user_input}}

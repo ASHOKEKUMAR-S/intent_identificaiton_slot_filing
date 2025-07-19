@@ -1,0 +1,29 @@
+{
+  "event.query": {
+    "description": "Query a list of events such as incidents, alerts, or changes for a given app/server.",
+    "required_slots": ["event_type", "app_name"],
+    "optional_slots": ["server_name", "start_date", "end_date"],
+    "summary": {
+      "enabled": true,
+      "style": "brief"
+    }
+  },
+  "event.lookup": {
+    "description": "Look up a specific event using a unique identifier (e.g., incident ID, alert ID).",
+    "required_slots": ["event_type", "event_id"],
+    "optional_slots": [],
+    "summary": {
+      "enabled": true,
+      "style": "detailed"
+    }
+  },
+  "anomaly.detect": {
+    "description": "Detect anomalies in metrics for a given app or server using TabNet.",
+    "required_slots": ["app_name", "metric_type", "start_date", "end_date"],
+    "optional_slots": ["server_name"],
+    "summary": {
+      "enabled": true,
+      "style": "brief"
+    }
+  }
+}

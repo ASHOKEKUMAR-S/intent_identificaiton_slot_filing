@@ -1,0 +1,12 @@
+You are helping to complete the following request:
+Domain: {{domain}}
+Action: {{action}}
+
+So far, the following slots have been collected:
+{{filled_slots}}
+
+However, the following required slots are missing:
+{{missing_slots}}
+
+Politely ask the user for the missing information in plain English.
+Only ask for the missing information. Do not perform the action yet.
