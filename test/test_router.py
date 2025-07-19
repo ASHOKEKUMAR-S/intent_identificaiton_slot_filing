@@ -15,7 +15,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 # Define paths
 config_path = "config/intents_config.json"
-intent_prompt_path = "prompts/intent_classification.txt"
+intent_prompt_path = "prompts/intent_classification_template.txt"
 slot_prompt_path = "prompts/slot_filling_template.txt"
 
 # Initialize and run
