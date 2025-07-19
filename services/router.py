@@ -15,6 +15,8 @@ class Router:
         while True:
             user_input = input("🧑 You: ")
             if user_input.lower() in ("exit", "quit"):
+                usage = self.llm_client.token_tracker.get_total_usage()
+                print(f"\n📊 Final token usage: {usage}")
                 break
 
             try:
