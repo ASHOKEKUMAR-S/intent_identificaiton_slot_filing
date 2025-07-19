@@ -1,13 +1,13 @@
 # services/llm_client.py
 
-import openai
+from openai import OpenAI
 from pathlib import Path
 import json
 from utils.token_tracker import TokenTracker
 
 class LLMClient:
     def __init__(self, api_key: str, model: str = "gpt-4"):
-        openai.api_key = api_key
+        self.client = OpenAI(api_key=api_key)
         self.model = model
         self.token_tracker = TokenTracker()
 
@@ -28,7 +28,7 @@ class LLMClient:
         prompt_template = self._load_prompt(prompt_path)
         prompt_text = self._format_prompt(prompt_template, variables)
 
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
@@ -37,7 +37,7 @@ class LLMClient:
             temperature=0.2,
         )
 
-        result = response["choices"][0]["message"]["content"]
-        usage = response["usage"]
-        self.token_tracker.update_usage(usage["prompt_tokens"], usage["completion_tokens"])
+        result = response.choices[0].message.content
+        usage = response.usage
+        self.token_tracker.update_usage(usage.prompt_tokens, usage.completion_tokens)
         return result
